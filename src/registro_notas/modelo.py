@@ -3,7 +3,7 @@ class RegistroNotas:
 
     def __init__(self):
         """Inicializa un nuevo registro de notas."""
-        pass
+        self._notas = {}
 
     def registrar_nota(self, materia: str, semestre: str, nota: float) -> None:
         """
@@ -19,3 +19,7 @@ class RegistroNotas:
         """
         if not (0.0 <= nota <= 5.0):
             raise ValueError(f"La nota {nota} está fuera del rango permitido (0.0 - 5.0)")
+        self._notas[(materia, semestre)] = nota
+
+    def aprueba(self, materia: str, semestre: str) -> bool:
+        return self._notas[(materia, semestre)] >= 3.0
