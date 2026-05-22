@@ -21,7 +21,9 @@ class RegistroNotas:
             raise ValueError(f"La nota {nota} está fuera del rango permitido (0.0 - 5.0)")
         clave = (materia, semestre)
         if clave in self._notas:
-            raise ValueError()
+            raise ValueError(
+                f"Ya existe una nota para '{materia}' en el semestre '{semestre}'"
+            )
         self._notas[clave] = nota
 
     def aprueba(self, materia: str, semestre: str) -> bool:
