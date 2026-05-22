@@ -67,6 +67,17 @@
 
 ## 5. Reporte de Cobertura
 
-<!-- El agente pegará aquí el output de pytest --cov al finalizar la Fase 3 -->
+```text
+---------- coverage: platform win32, python 3.12.10-final-0 ----------
+Name                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------
+src\__init__.py                      0      0   100%
+src\registro_notas\__init__.py       0      0   100%
+src\registro_notas\modelo.py        19      0   100%
+--------------------------------------------------------------
+TOTAL                               19      0   100%
+
+Required test coverage of 85% reached. Total coverage: 100.00%
+```
 
 ---
