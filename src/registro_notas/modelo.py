@@ -39,3 +39,11 @@ class RegistroNotas:
         if clave not in self._notas:
             raise KeyError(f"No hay nota registrada para '{materia}' en '{semestre}'")
         return self._notas[clave] >= 3.0
+
+    def promedio(self) -> float:
+        if len(self._notas) == 0:
+            return 0.0
+        total = 0.0
+        for nota in self._notas.values():
+            total += nota
+        return total / len(self._notas)
