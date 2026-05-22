@@ -15,11 +15,14 @@ class RegistroNotas:
             nota (float): Valor de la nota, debe estar entre 0.0 y 5.0.
 
         Raises:
-            ValueError: Si la nota está fuera del rango permitido.
+            ValueError: Si la nota está fuera del rango permitido o duplicada.
         """
         if not (0.0 <= nota <= 5.0):
             raise ValueError(f"La nota {nota} está fuera del rango permitido (0.0 - 5.0)")
-        self._notas[(materia, semestre)] = nota
+        clave = (materia, semestre)
+        if clave in self._notas:
+            raise ValueError()
+        self._notas[clave] = nota
 
     def aprueba(self, materia: str, semestre: str) -> bool:
         """
