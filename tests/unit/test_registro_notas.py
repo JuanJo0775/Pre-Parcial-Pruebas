@@ -57,3 +57,23 @@ class TestAprobacion:
         r = RegistroNotas()
         r.registrar_nota("Fisica", "2024-1", 0.0)
         assert r.aprueba("Fisica", "2024-1") is False
+
+
+# ─── REQUERIMIENTO 3: Promedio ────────────────────────────────────────────────
+
+class TestPromedio:
+
+    def test_TC11_promedio_sin_notas_es_cero(self):
+        r = RegistroNotas()
+        assert r.promedio() == 0.0
+
+    def test_TC12_promedio_una_nota(self):
+        r = RegistroNotas()
+        r.registrar_nota("Quimica", "2024-1", 4.0)
+        assert r.promedio() == 4.0
+
+    def test_TC13_promedio_multiples_notas(self):
+        r = RegistroNotas()
+        r.registrar_nota("Quimica", "2024-1", 4.0)
+        r.registrar_nota("Fisica", "2024-1", 2.0)
+        assert r.promedio() == 3.0
