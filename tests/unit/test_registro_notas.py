@@ -77,3 +77,24 @@ class TestPromedio:
         r.registrar_nota("Quimica", "2024-1", 4.0)
         r.registrar_nota("Fisica", "2024-1", 2.0)
         assert r.promedio() == 3.0
+
+
+# ─── REQUERIMIENTO 4: No duplicar nota ───────────────────────────────────────
+
+class TestNoDuplicados:
+
+    def test_TC14_duplicado_misma_materia_mismo_semestre_lanza_error(self):
+        r = RegistroNotas()
+        r.registrar_nota("Historia", "2024-1", 3.5)
+        with pytest.raises(ValueError):
+            r.registrar_nota("Historia", "2024-1", 4.0)
+
+    def test_TC15_misma_materia_diferente_semestre_es_valido(self):
+        r = RegistroNotas()
+        r.registrar_nota("Historia", "2024-1", 3.5)
+        r.registrar_nota("Historia", "2024-2", 4.0)
+
+    def test_TC16_diferente_materia_mismo_semestre_es_valido(self):
+        r = RegistroNotas()
+        r.registrar_nota("Historia", "2024-1", 3.5)
+        r.registrar_nota("Matematicas", "2024-1", 4.0)
