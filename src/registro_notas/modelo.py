@@ -22,4 +22,20 @@ class RegistroNotas:
         self._notas[(materia, semestre)] = nota
 
     def aprueba(self, materia: str, semestre: str) -> bool:
-        return self._notas[(materia, semestre)] >= 3.0
+        """
+        Consulta si una materia ha sido aprobada en un semestre.
+
+        Args:
+            materia (str): Nombre de la materia.
+            semestre (str): Identificador del semestre.
+
+        Returns:
+            bool: True si la nota es >= 3.0, False de lo contrario.
+
+        Raises:
+            KeyError: Si no hay nota registrada para la materia en el semestre.
+        """
+        clave = (materia, semestre)
+        if clave not in self._notas:
+            raise KeyError(f"No hay nota registrada para '{materia}' en '{semestre}'")
+        return self._notas[clave] >= 3.0
