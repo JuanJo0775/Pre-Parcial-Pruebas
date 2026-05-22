@@ -41,9 +41,12 @@ class RegistroNotas:
         return self._notas[clave] >= 3.0
 
     def promedio(self) -> float:
-        if len(self._notas) == 0:
+        """
+        Calcula el promedio de todas las notas registradas.
+
+        Returns:
+            float: Promedio de las notas, o 0.0 si no hay notas registradas.
+        """
+        if not self._notas:
             return 0.0
-        total = 0.0
-        for nota in self._notas.values():
-            total += nota
-        return total / len(self._notas)
+        return sum(self._notas.values()) / len(self._notas)
